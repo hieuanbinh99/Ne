@@ -1,0 +1,36 @@
+src/ne_agent/main.py
+from .core.processor import Processor
+from .core.memory import MemoryManager
+from .config.settings import load_config
+import logging
+
+class NeAgent:
+    def __init__(self, config_path="config.yaml"):
+        self.config = load_config(config_path)
+        self.memory = MemoryManager(self.config['memory'])
+        self.processor = Processor(self.config['model'])
+        self.setup_logging()
+    
+    def setup_logging(self):
+        logging.basicConfig(
+            level=getattr(logging, self.config['logging']['level']),
+            filename=self.config['logging']['file'],
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
+    
+    def process(self, input_text):
+        try:
+            # Add to memory
+            self.memory.add_message("user", input_text)
+            
+            # Process input
+            response = self.processor.generate_response(input_text)
+            
+            # Store response
+            self.memory.add_message("assistant", response)
+            
+            return response
+            
+        except Exception as e:
+            logging.error(f"Processing error: {e}")
+            return "Sorry, I encountered an error processing your request."
