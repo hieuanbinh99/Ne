@@ -1,0 +1,8 @@
+# Run tests
+python -m pytest tests/
+
+# Code formatting
+black src/ tests/
+
+# Type checking
+mypy src/
