@@ -1,0 +1,8 @@
+from ne_agent import NeAgent
+
+# Initialize the agent
+agent = NeAgent(config_path="config.yaml")
+
+# Process tasks
+result = agent.process("Your input here")
+print(result)
