@@ -1,0 +1,25 @@
+Ne/
+├── src/
+│   └── ne_agent/
+│       ├── __init__.py
+│       ├── main.py
+│       ├── core/
+│       │   ├── __init__.py
+│       │   ├── processor.py
+│       │   └── memory.py
+│       ├── utils/
+│       │   ├── __init__.py
+│       │   └── helpers.py
+│       └── config/
+│           ├── __init__.py
+│           └── settings.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_core.py
+│   └── test_utils.py
+├── requirements.txt
+├── setup.py
+├── .gitignore
+├── LICENSE
+├── README.md
+└── config.yaml
